@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will you be my Valentine?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: #fff0f5;
+      text-align: center;
+    }
+
+    img {
+      width: 200px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: white;
+    }
+
+    #yes {
+      background: green;
+      font-size: 16px;
+    }
+
+    #no {
+      background: red;
+      font-size: 16px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    <img id="image" src="https://media.tenor.com/VIChDQ6ejRQAAAAj/jumping-bear-hearts-no-png.gif">
+    <h1>Никита будь моим Валентином 💘</h1>
+
+    <div>
+      <button id="yes">Да</button>
+      <button id="no">Нет</button>
+    </div>
+  </div>
+
+  <script>
+    const noPhrases = [
+      "Нет 💔",
+      "Ну пожалуйста 🥺",
+      "Но мы так подходим друг другу 💕",
+      "Без шансов ?",
+      "Ах ты сучка 😅",
+      "Ну шлюшка нажми да 🥲",
+      "Я буду плакаааать 😭😭😭"
+    ];
+
+    let noClicks = 0;
+
+    const yesBtn = document.getElementById("yes");
+    const noBtn = document.getElementById("no");
+    const image = document.getElementById("image");
+    const app = document.getElementById("app");
+
+    noBtn.addEventListener("click", () => {
+      noClicks++;
+
+      const size = 16 + noClicks * 10;
+      yesBtn.style.fontSize = size + "px";
+
+      noBtn.textContent =
+        noPhrases[Math.min(noClicks - 1, noPhrases.length - 1)];
+    });
+
+    yesBtn.addEventListener("click", () => {
+      app.innerHTML = `
+        <img src="https://media.tenor.com/f1xnRxTRxLAAAAAj/bears-with-kisses-bg.gif">
+        <h1 style="font-size:48px;color:pink;">Урааа, люблю тебя !!! 💖🎉</h1>
+      `;
+    });
+  </script>
+
+</body>
+</html>
